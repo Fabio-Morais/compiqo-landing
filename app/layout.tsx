@@ -92,18 +92,9 @@ export const metadata: Metadata = {
   category: "Software",
   classification: "Business Application",
   icons: {
-    icon: [
-      { url: "/logo.png", sizes: "any" },
-      { url: "/logo.png", type: "image/png" },
-    ],
-    apple: [{ url: "/logo.png", sizes: "180x180", type: "image/png" }],
+    icon: "/logo.png",
+    apple: "/logo.png",
     shortcut: "/logo.png",
-    other: [
-      {
-        rel: "apple-touch-icon",
-        url: "/logo.png",
-      },
-    ],
   },
 };
 
