@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "features": "Funcionalidades",
+    "club": "Para Clubes",
+    "athlete": "Para Atletas",
+    "sports": "Modalidades",
+    "interest": "Estoy Interesado",
+    "login": "Entrar",
+    "soon": "Próximamente"
+  },
+  "hero": {
+    "badge": "Plataforma Completa para Deportes de Combate",
+    "title": "Gestiona tu club de deportes de combate.",
+    "titleHighlight": "Prepara campeones.",
+    "description": "Compiqo es la plataforma B2B que conecta clubes, atletas y organizadores de eventos. Control de peso, preparación para competiciones, historial de combates y mucho más en un solo lugar.",
+    "cta": "Próximamente",
+    "badges": {
+      "free": "Gratis para Atletas",
+      "protected": "Datos Protegidos",
+      "setup": "Configuración en 5 minutos"
+    }
+  },
+  "sports": {
+    "title": "Modalidades Soportadas",
+    "subtitle": "Boxeo, Kickboxing y Muay Thai con categorías Amateur, Neo-Profesional y Profesional"
+  },
+  "features": {
+    "title": "Funcionalidades Completas",
+    "subtitle": "Todo lo que necesitas para gestionar tu club de deportes de combate",
+    "athleteManagement": {
+      "title": "Gestión de Atletas",
+      "desc": "Registra atletas, gestiona perfiles por modalidad, sigue el estado de preparación e historial completo de cada luchador."
+    },
+    "weightControl": {
+      "title": "Control de Peso",
+      "desc": "Monitorea peso normal y peso de competición. Alertas inteligentes para corte de peso saludable antes de los eventos."
+    },
+    "events": {
+      "title": "Eventos e Inscripciones",
+      "desc": "Crea eventos, registra atletas por modalidad, valida categorías automáticamente y exporta listas de inscripción."
+    },
+    "history": {
+      "title": "Historial de Combates",
+      "desc": "Registro completo de victorias, derrotas y empates. El club aprueba cada resultado antes de ir al perfil del atleta."
+    },
+    "matchmaking": {
+      "title": "Matchmaking",
+      "desc": "Busca adversarios por peso, categoría y experiencia. Alertas de incompatibilidad evitan errores en la tarjeta."
+    },
+    "realtime": {
+      "title": "Tiempo Real",
+      "desc": "Los atletas actualizan disponibilidad y peso. Los entrenadores ven todo instantáneamente en el panel del club."
+    }
+  },
+  "club": {
+    "title": "Para Clubes y Gimnasios",
+    "description": "Ten control total sobre tus atletas y prepáralos para competiciones",
+    "features": [
+      "Registra y gestiona perfiles de atletas",
+      "Control de peso y preparación por modalidad",
+      "Crea eventos y registra inscripciones",
+      "Aprueba resultados de combates (victorias/derrotas)",
+      "Panel con visión general de todos los atletas",
+      "Exporta datos para eventos y federaciones"
+    ],
+    "cta": "Próximamente"
+  },
+  "athlete": {
+    "title": "Para Atletas",
+    "description": "Accede a tu perfil, actualiza peso y disponibilidad, ve tu historial",
+    "features": [
+      "Perfil completo con historial de combates",
+      "Actualización de peso y disponibilidad",
+      "Notificaciones de eventos y competiciones",
+      "Visualización de adversarios compatibles",
+      "Acceso gratuito a todas las funcionalidades",
+      "Datos protegidos y privados"
+    ],
+    "cta": "Próximamente"
+  },
+  "howItWorks": {
+    "title": "Cómo Funciona",
+    "subtitle": "Comienza a usar Compiqo en 4 pasos simples",
+    "steps": {
+      "step1": {
+        "title": "Crea Tu Club",
+        "desc": "Registra tu academia en pocos clics y personaliza tu espacio"
+      },
+      "step2": {
+        "title": "Invita Atletas",
+        "desc": "Envía invitaciones por correo electrónico. Los atletas reciben un enlace para acceder"
+      },
+      "step3": {
+        "title": "Perfiles Completos",
+        "desc": "Los atletas añaden foto, peso, modalidades e historial de combates"
+      },
+      "step4": {
+        "title": "Gestiona Eventos",
+        "desc": "Inscribe atletas en competiciones y sigue resultados"
+      }
+    }
+  },
+  "cta": {
+    "title": "¿Listo para Empezar?",
+    "subtitle": "Únete a los clubes que ya confían en Compiqo para gestionar sus atletas",
+    "button": "Próximamente"
+  },
+  "interest": {
+    "title": "¿Estás Interesado?",
+    "subtitle": "Déjanos tu contacto y nos pondremos en contacto cuando la plataforma esté disponible.",
+    "form": {
+      "title": "Formulario de Interés",
+      "description": "Completa el formulario a continuación y nos pondremos en contacto próximamente.",
+      "name": "Nombre Completo",
+      "email": "Email",
+      "message": "Mensaje (Opcional)",
+      "submit": "Enviar Interés",
+      "sending": "Enviando...",
+      "success": "¡Gracias! Tu mensaje ha sido enviado con éxito.",
+      "error": "Error:"
+    }
+  },
+  "footer": {
+    "description": "La plataforma completa para gestión de clubes de deportes de combate. Conectando atletas, entrenadores y organizadores.",
+    "platform": "Plataforma",
+    "legal": "Legal",
+    "copyright": "© 2025 Compiqo. Todos los derechos reservados."
+  }
+}
+

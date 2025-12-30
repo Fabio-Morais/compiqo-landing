@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
 
     // Enviar email usando Resend
     const { data, error } = await resend.emails.send({
-      from: "Compiqo <onboarding@resend.dev>", // Será substituído pelo seu domínio verificado
+      from: "Compiqo <no-reply@compiqo.com>",
       to: ["fabio-morais@outlook.pt"],
       subject: `Novo interesse no Compiqo - ${name}`,
       html: `
@@ -29,6 +29,11 @@ export async function POST(request: NextRequest) {
           <p style="color: #6b7280; font-size: 12px;">
             Este email foi enviado através do formulário de interesse do site Compiqo.
           </p>
+          <p style="font-size:12px;color:#6b7280">
+            You received this email because someone submitted the Compiqo interest form.<br />
+            © 2025 Compiqo · <a href="https://compiqo.com">compiqo.com</a>
+          </p>
+
         </div>
       `,
       text: `
