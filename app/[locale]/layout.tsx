@@ -1,6 +1,8 @@
 import { Locale } from "../lib/i18n";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -16,9 +18,10 @@ const geistMono = Geist_Mono({
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale: localeParam } = await params;
+  const locale: Locale = localeParam === "es-ES" ? "es-ES" : "pt-PT";
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://compiqo.com";
 
   const localeMap: Record<Locale, string> = {
@@ -27,11 +30,11 @@ export async function generateMetadata({
   };
 
   const isES = locale === "es-ES";
-  
+
   const title = isES
     ? "Compiqo - Plataforma Completa para Gestión de Clubes de Deportes de Combate"
     : "Compiqo - Plataforma Completa para Gestão de Clubes de Desportos de Combate";
-  
+
   const description = isES
     ? "Gestiona tu club de deportes de combate con Compiqo. Control de peso, preparación para competiciones, historial de combates y mucho más. La plataforma esencial para conectar clubes, atletas y organizadores de eventos en España."
     : "Gere o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e muito mais. A plataforma essencial para conectar clubes, atletas e organizadores de eventos em Portugal.";
@@ -158,38 +161,37 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const validLocale: Locale = locale === "es-ES" ? "es-ES" : "pt-PT";
   const localeMap: Record<Locale, string> = {
     "pt-PT": "pt-PT",
     "es-ES": "es-ES",
   };
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://compiqo.com";
-  const otherLocale = locale === "pt-PT" ? "es-ES" : "pt-PT";
+  const otherLocale = validLocale === "pt-PT" ? "es-ES" : "pt-PT";
 
   return (
-    <html lang={localeMap[locale]}>
+    <html lang={localeMap[validLocale]}>
       <head>
         <link
           rel="alternate"
-          hrefLang={locale.toLowerCase()}
-          href={`${baseUrl}/${locale}`}
+          hrefLang={validLocale.toLowerCase()}
+          href={`${baseUrl}/${validLocale}`}
         />
         <link
           rel="alternate"
           hrefLang={otherLocale.toLowerCase()}
           href={`${baseUrl}/${otherLocale}`}
         />
-        <link
-          rel="alternate"
-          hrefLang="x-default"
-          href={`${baseUrl}/pt-PT`}
-        />
+        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/pt-PT`} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

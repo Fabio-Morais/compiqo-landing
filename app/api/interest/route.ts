@@ -14,8 +14,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Enviar email usando Resend
-    const { data, error } = await resend.emails.send({
+        // Enviar email usando Resend
+        const { error } = await resend.emails.send({
       from: "Compiqo <no-reply@compiqo.com>",
       to: ["fabio-morais@outlook.pt"],
       subject: `Novo interesse no Compiqo - ${name}`,

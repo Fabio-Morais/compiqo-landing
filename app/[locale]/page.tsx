@@ -42,9 +42,10 @@ import { Locale, getTranslations } from "../lib/i18n";
 export default async function LandingPage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale: localeParam } = await params;
+  const locale: Locale = (localeParam === "es-ES" ? "es-ES" : "pt-PT");
   const t = getTranslations(locale);
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://compiqo.com";
 
