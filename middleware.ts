@@ -57,12 +57,14 @@ function getLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Ignorar arquivos estáticos e API routes
+  // Ignorar arquivos estáticos, API routes e rotas especiais do Next.js
   if (
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon") ||
-    pathname.match(/\.(ico|png|svg|jpg|jpeg|gif|webp)$/)
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt" ||
+    pathname.match(/\.(ico|png|svg|jpg|jpeg|gif|webp|xml|txt)$/)
   ) {
     return NextResponse.next();
   }
@@ -84,8 +86,8 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Não aplicar middleware a arquivos estáticos e API routes
-    "/((?!api|_next/static|_next/image|favicon.ico|logo.png|.*\\.png|.*\\.svg|.*\\.ico|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.webp).*)",
+    // Não aplicar middleware a arquivos estáticos, API routes e rotas especiais
+    "/((?!api|_next/static|_next/image|favicon.ico|logo.png|sitemap.xml|robots.txt|.*\\.png|.*\\.svg|.*\\.ico|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.webp|.*\\.xml|.*\\.txt).*)",
   ],
 };
 
