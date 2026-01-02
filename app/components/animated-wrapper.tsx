@@ -25,8 +25,8 @@ export function AnimatedWrapper({
     <motion.div
       initial={defaultInitial}
       whileInView={defaultAnimate}
-      viewport={{ once: true }}
-      transition={{ delay, duration: 0.6 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay, duration: 0.5, ease: "easeOut" }}
       className={className}
     >
       {children}
@@ -43,9 +43,9 @@ export function AnimatedHeroWrapper({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={className}
     >
       {children}
@@ -62,9 +62,9 @@ export function AnimatedMockupWrapper({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, rotateY: -20, rotateX: 10 }}
-      animate={{ opacity: 1, rotateY: -12, rotateX: 5 }}
-      transition={{ duration: 1, delay: 0.2 }}
+      initial={{ opacity: 0, rotateY: -15, rotateX: 8 }}
+      animate={{ opacity: 1, rotateY: -10, rotateX: 3 }}
+      transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
       className={className}
     >
       {children}

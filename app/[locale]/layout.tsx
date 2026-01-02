@@ -8,11 +8,15 @@ import "../globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+  preload: false,
 });
 
 export async function generateMetadata({
@@ -207,6 +211,22 @@ export default async function LocaleLayout({
   return (
     <html lang={localeMap[validLocale]}>
       <head>
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link rel="preconnect" href="https://grainy-gradients.vercel.app" />
+
+        {/* DNS prefetch */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://grainy-gradients.vercel.app" />
+
+        {/* Resource hints */}
+        <link rel="preload" as="image" href="/logo.png" />
+
         <link
           rel="alternate"
           hrefLang={validLocale.toLowerCase()}

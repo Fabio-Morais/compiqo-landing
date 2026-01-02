@@ -25,7 +25,7 @@ export function SportsSectionHeaderStatic() {
       <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
         Modalidades Suportadas
       </h2>
-      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <p className="text-lg text-foreground/75 max-w-2xl mx-auto">
         Suporte completo para as três principais modalidades de combate
       </p>
     </div>
@@ -64,7 +64,7 @@ export function FeaturesSectionHeaderStatic() {
       <h2 className="text-5xl md:text-6xl font-heading font-bold leading-tight">
         Tudo o que precisa para gerir o seu clube
       </h2>
-      <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+      <p className="text-xl md:text-2xl text-foreground/75 max-w-3xl mx-auto">
         Ferramentas profissionais para clubes de todos os tamanhos.
         Simplifique a gestão e foque no que importa: formar campeões.
       </p>
@@ -87,7 +87,7 @@ export function FeatureCardStatic({
         <CardTitle className="text-xl">{feature.title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
+        <p className="text-foreground/70 leading-relaxed">{feature.desc}</p>
       </CardContent>
     </Card>
   );
@@ -99,7 +99,7 @@ export function HowItWorksHeaderStatic() {
       <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
         Como Funciona
       </h2>
-      <p className="text-lg text-muted-foreground">
+      <p className="text-lg text-foreground/75">
         Quatro passos simples para começar
       </p>
     </div>
@@ -129,7 +129,7 @@ export function StepItemStatic({
         <h3 className="text-xl md:text-2xl font-bold mb-1 group-hover:text-orange-600 transition-colors">
           {item.title}
         </h3>
-        <p className="text-muted-foreground">{item.desc}</p>
+        <p className="text-foreground/70">{item.desc}</p>
       </div>
     </div>
   );

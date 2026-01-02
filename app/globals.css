@@ -76,9 +76,9 @@
   --secondary: 230 30% 96%;
   --secondary-foreground: 230 50% 15%;
 
-  /* Muted - Cool Grays */
+  /* Muted - Cool Grays - Improved contrast */
   --muted: 220 20% 96%;
-  --muted-foreground: 220 20% 50%;
+  --muted-foreground: 220 20% 40%;
 
   /* Accent - Hover states */
   --accent: 230 85% 98%;
@@ -114,6 +114,17 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading font-bold tracking-tight;
   }
+}
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, video {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Custom Scrollbar */

@@ -39,7 +39,7 @@ export function InterestForm() {
       setTimeout(() => {
         setIsSuccess(false);
       }, 5000);
-    } catch (err) {
+    } catch {
       setError("Ocorreu um erro. Por favor, tente novamente.");
     } finally {
       setIsSubmitting(false);

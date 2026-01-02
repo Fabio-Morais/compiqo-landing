@@ -20,7 +20,7 @@ export function HeroContentStatic({ t }: { t: Translations }) {
         </span>
       </h1>
 
-      <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
+      <p className="text-xl text-foreground/75 leading-relaxed max-w-xl">
         {t.hero.description}
       </p>
 
@@ -34,7 +34,7 @@ export function HeroContentStatic({ t }: { t: Translations }) {
         </Button>
       </div>
 
-      <div className="flex flex-wrap gap-4 sm:gap-6 text-sm font-medium text-muted-foreground pt-6 border-t border-border">
+      <div className="flex flex-wrap gap-4 sm:gap-6 text-sm font-medium text-foreground/70 pt-6 border-t border-border">
         <div className="flex items-center gap-2">
           <div className="p-1.5 rounded-full bg-green-100 text-green-600 dark:bg-green-950 dark:text-green-400">
             <CheckCircle2 className="w-4 h-4" />

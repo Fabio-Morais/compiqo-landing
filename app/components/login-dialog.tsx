@@ -9,7 +9,6 @@ import {
   DialogDescription,
 } from "./ui/dialog";
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
 
 export function LoginDialog() {
   return (
