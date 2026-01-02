@@ -23,7 +23,7 @@ export function HeroContent() {
       </div>
 
       <h1 className="text-5xl lg:text-7xl font-heading font-bold tracking-tight leading-[1.1] text-foreground">
-        Gere o seu clube.{" "}
+        Gira o seu clube.{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">
           Prepare campeões.
         </span>

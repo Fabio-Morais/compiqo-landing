@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Compiqo",
   },
   description:
-    "Gere o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e muito mais. A conectar clubes, atletas e organizadores de eventos em Portugal.",
+    "Gira o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e muito mais. A conectar clubes, atletas e organizadores de eventos em Portugal.",
   keywords: [
     "desportos de combate",
     "gestão de clube",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title:
       "Compiqo - Plataforma Completa para Gestão de Clubes de Desportos de Combate",
     description:
-      "Gere o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e muito mais. A conectar clubes, atletas e organizadores de eventos.",
+      "Gira o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e muito mais. A conectar clubes, atletas e organizadores de eventos.",
     images: [
       {
         url: "/og-image.png",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title:
       "Compiqo - Plataforma Completa para Gestão de Clubes de Desportos de Combate",
     description:
-      "Gere o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e muito mais.",
+      "Gira o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e muito mais.",
     images: ["/og-image.png"],
     creator: "@compiqo",
   },

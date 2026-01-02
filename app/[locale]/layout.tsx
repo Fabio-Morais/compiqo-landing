@@ -41,7 +41,7 @@ export async function generateMetadata({
 
   const description = isES
     ? "Gestiona tu club de deportes de combate con Compiqo. Control de peso, preparación para competiciones, historial de combates y matchmaking. Plataforma B2B gratuita para atletas. Soporta Boxeo, Kickboxing y Muay Thai. Disponible en España y Portugal."
-    : "Gere o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e matchmaking. Plataforma B2B gratuita para atletas. Suporta Boxing, Kickboxing e Muay Thai. Disponível em Portugal e Espanha.";
+    : "Gira o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e matchmaking. Plataforma B2B gratuita para atletas. Suporta Boxing, Kickboxing e Muay Thai. Disponível em Portugal e Espanha.";
 
   const keywords = isES
     ? [
