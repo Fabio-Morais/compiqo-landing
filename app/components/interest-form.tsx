@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Mail, Loader2, CheckCircle2 } from "lucide-react";
+import { Translations } from "../lib/i18n";
 
-export function InterestForm() {
+export function InterestForm({ t }: { t: Translations }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -27,7 +28,7 @@ export function InterestForm() {
       });
 
       if (!response.ok) {
-        throw new Error("Erro ao enviar mensagem");
+        throw new Error(t.interest.form.errorSending);
       }
 
       setIsSuccess(true);
@@ -40,7 +41,7 @@ export function InterestForm() {
         setIsSuccess(false);
       }, 5000);
     } catch {
-      setError("Ocorreu um erro. Por favor, tente novamente.");
+      setError(t.interest.form.error);
     } finally {
       setIsSubmitting(false);
     }
@@ -51,10 +52,10 @@ export function InterestForm() {
       <div className="p-6 rounded-2xl bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 text-center">
         <CheckCircle2 className="w-12 h-12 text-green-600 mx-auto mb-4" />
         <h3 className="text-xl font-bold text-green-900 dark:text-green-100 mb-2">
-          Obrigado pelo seu interesse!
+          {t.interest.form.successTitle}
         </h3>
         <p className="text-green-700 dark:text-green-300">
-          Entraremos em contacto em breve.
+          {t.interest.form.successMessage}
         </p>
       </div>
     );
@@ -64,7 +65,7 @@ export function InterestForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-2">
-          Nome
+          {t.interest.form.name}
         </label>
         <input
           id="name"
@@ -73,12 +74,12 @@ export function InterestForm() {
           onChange={(e) => setName(e.target.value)}
           required
           className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-          placeholder="O seu nome"
+          placeholder={t.interest.form.namePlaceholder}
         />
       </div>
       <div>
         <label htmlFor="email" className="block text-sm font-medium mb-2">
-          E-mail
+          {t.interest.form.email}
         </label>
         <input
           id="email"
@@ -87,12 +88,12 @@ export function InterestForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
           className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-          placeholder="o.seu@email.com"
+          placeholder={t.interest.form.emailPlaceholder}
         />
       </div>
       <div>
         <label htmlFor="message" className="block text-sm font-medium mb-2">
-          Mensagem (opcional)
+          {t.interest.form.message}
         </label>
         <textarea
           id="message"
@@ -100,7 +101,7 @@ export function InterestForm() {
           onChange={(e) => setMessage(e.target.value)}
           rows={4}
           className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
-          placeholder="Conte-nos mais sobre o seu interesse..."
+          placeholder={t.interest.form.messagePlaceholder}
         />
       </div>
       {error && (
@@ -116,12 +117,12 @@ export function InterestForm() {
         {isSubmitting ? (
           <>
             <Loader2 className="mr-2 w-4 h-4 animate-spin" />
-            A enviar...
+            {t.interest.form.sending}
           </>
         ) : (
           <>
             <Mail className="mr-2 w-4 h-4" />
-            Enviar Interesse
+            {t.interest.form.submit}
           </>
         )}
       </Button>

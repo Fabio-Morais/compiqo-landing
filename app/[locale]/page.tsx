@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { LoginDialog } from "../components/login-dialog";
 import { HeroContentStatic } from "../components/hero-content-static";
-import { HeroMockupStatic } from "../components/hero-mockup-static";
+import { HeroMockupLazy } from "../components/hero-mockup-lazy";
 import {
   SportsSectionHeaderStatic,
   SportCardStatic,
@@ -24,10 +24,10 @@ import {
 } from "../components/sections-static";
 import { CTASectionStatic } from "../components/sections-static";
 import {
-  AnimatedWrapper,
   AnimatedHeroWrapper,
   AnimatedMockupWrapper,
 } from "../components/animated-wrapper";
+import { AnimatedWrapperLazy } from "../components/animated-wrapper-lazy";
 import { InterestForm } from "../components/interest-form";
 import { ArrowRight } from "lucide-react";
 import {
@@ -37,7 +37,7 @@ import {
   CardTitle,
   CardDescription,
 } from "../components/ui/card";
-import { Locale, getTranslations } from "../lib/i18n";
+import { Locale, getTranslations, Translations } from "../lib/i18n";
 
 export default async function LandingPage({
   params,
@@ -46,7 +46,7 @@ export default async function LandingPage({
 }) {
   const { locale: localeParam } = await params;
   const locale: Locale = localeParam === "es-ES" ? "es-ES" : "pt-PT";
-  const t = getTranslations(locale);
+  const t = getTranslations(locale) as Translations;
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://compiqo.com";
 
   // Structured Data Schemas - Localizados por idioma
@@ -371,16 +371,15 @@ export default async function LandingPage({
         {/* Hero Section */}
         <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pt-52 lg:pb-40">
           <div className="absolute inset-0 z-0">
-            {/* Defer background image - not critical for LCP */}
             <Image
               src={generatedAppBg}
               alt=""
               fill
               className="object-cover opacity-[0.03]"
-              loading="lazy"
+              priority
               aria-hidden="true"
               sizes="100vw"
-              quality={50}
+              quality={75}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
           </div>
@@ -390,8 +389,8 @@ export default async function LandingPage({
               <AnimatedHeroWrapper className="w-full lg:order-1">
                 <HeroContentStatic t={t} />
               </AnimatedHeroWrapper>
-              <AnimatedMockupWrapper className="relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-[700px] w-full flex items-center justify-center perspective-[2000px] lg:order-2 mt-18 sm:mt-16 lg:mt-0">
-                <HeroMockupStatic />
+              <AnimatedMockupWrapper className="relative h-[500px] sm:h-[450px] md:h-[500px] lg:h-[700px] w-full flex items-center justify-center perspective-[2000px] lg:order-2 mt-18 sm:mt-16 lg:mt-0">
+                <HeroMockupLazy t={t} />
               </AnimatedMockupWrapper>
             </div>
           </div>
@@ -403,27 +402,43 @@ export default async function LandingPage({
           className="py-20 bg-gradient-to-b from-background to-secondary/20"
         >
           <div className="max-w-7xl mx-auto px-6">
-            <AnimatedWrapper>
-              <SportsSectionHeaderStatic />
-            </AnimatedWrapper>
+            <SportsSectionHeaderStatic t={t} />
 
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {[
-                { name: "Boxing", emoji: "🥊", classes: ["Amateur", "Pro"] },
                 {
-                  name: "Kickboxing",
-                  emoji: "💥",
-                  classes: ["Amateur", "Neo-Pro", "Pro"],
+                  name: t.mockup.sampleData.sports.boxing.replace("🥊 ", ""),
+                  emoji: "🥊",
+                  classes: [
+                    t.mockup.sampleData.classes.amateur,
+                    t.mockup.sampleData.classes.pro,
+                  ],
                 },
                 {
-                  name: "Muay Thai",
+                  name: t.mockup.sampleData.sports.kickboxing.replace(
+                    "💥 ",
+                    ""
+                  ),
+                  emoji: "💥",
+                  classes: [
+                    t.mockup.sampleData.classes.amateur,
+                    t.mockup.sampleData.classes.neoPro,
+                    t.mockup.sampleData.classes.pro,
+                  ],
+                },
+                {
+                  name: t.mockup.sampleData.sports.muayThai.replace("🦵 ", ""),
                   emoji: "🦵",
-                  classes: ["Amateur", "Neo-Pro", "Pro"],
+                  classes: [
+                    t.mockup.sampleData.classes.amateur,
+                    t.mockup.sampleData.classes.neoPro,
+                    t.mockup.sampleData.classes.pro,
+                  ],
                 },
               ].map((sport, i) => (
-                <AnimatedWrapper key={sport.name} delay={i * 0.1}>
+                <AnimatedWrapperLazy key={sport.name} delay={i * 0.1}>
                   <SportCardStatic sport={sport} />
-                </AnimatedWrapper>
+                </AnimatedWrapperLazy>
               ))}
             </div>
           </div>
@@ -432,46 +447,44 @@ export default async function LandingPage({
         {/* Features Section */}
         <section id="features" className="py-32 bg-secondary/20">
           <div className="max-w-7xl mx-auto px-6">
-            <AnimatedWrapper>
-              <FeaturesSectionHeaderStatic />
-            </AnimatedWrapper>
+            <FeaturesSectionHeaderStatic t={t} />
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
                   icon: "Users",
-                  title: "Gestão de Atletas",
-                  desc: "Registe atletas, gere perfis por modalidade, acompanhe o estado de prontidão e histórico completo de cada lutador.",
+                  title: t.features.athleteManagement.title,
+                  desc: t.features.athleteManagement.desc,
                 },
                 {
                   icon: "Scale",
-                  title: "Controlo de Peso",
-                  desc: "Monitorize peso normal e peso de competição. Alertas inteligentes para corte de peso saudável antes dos eventos.",
+                  title: t.features.weightControl.title,
+                  desc: t.features.weightControl.desc,
                 },
                 {
                   icon: "Calendar",
-                  title: "Eventos e Inscrições",
-                  desc: "Crie eventos, registe atletas por modalidade, valide categorias automaticamente e exporte listas de inscrição.",
+                  title: t.features.events.title,
+                  desc: t.features.events.desc,
                 },
                 {
                   icon: "Trophy",
-                  title: "Histórico de Lutas",
-                  desc: "Registo completo de vitórias, derrotas e empates. O clube aprova cada resultado antes de ir para o perfil do atleta.",
+                  title: t.features.history.title,
+                  desc: t.features.history.desc,
                 },
                 {
                   icon: "Target",
-                  title: "Matchmaking",
-                  desc: "Procure adversários por peso, categoria e experiência. Alertas de incompatibilidade evitam erros no card.",
+                  title: t.features.matchmaking.title,
+                  desc: t.features.matchmaking.desc,
                 },
                 {
                   icon: "Zap",
-                  title: "Tempo Real",
-                  desc: "Atletas actualizam disponibilidade e peso. Treinadores veem tudo instantaneamente no painel do clube.",
+                  title: t.features.realtime.title,
+                  desc: t.features.realtime.desc,
                 },
               ].map((feature, i) => (
-                <AnimatedWrapper key={i} delay={i * 0.1}>
+                <AnimatedWrapperLazy key={i} delay={i * 0.1}>
                   <FeatureCardStatic feature={feature} />
-                </AnimatedWrapper>
+                </AnimatedWrapperLazy>
               ))}
             </div>
           </div>
@@ -481,19 +494,19 @@ export default async function LandingPage({
         <section id="club" className="py-24 bg-background">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12">
-              <AnimatedWrapper
+              <AnimatedWrapperLazy
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
               >
-                <ClubCardStatic />
-              </AnimatedWrapper>
+                <ClubCardStatic t={t} />
+              </AnimatedWrapperLazy>
               <div id="athlete">
-                <AnimatedWrapper
+                <AnimatedWrapperLazy
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
                 >
-                  <AthleteCardStatic />
-                </AnimatedWrapper>
+                  <AthleteCardStatic t={t} />
+                </AnimatedWrapperLazy>
               </div>
             </div>
           </div>
@@ -502,9 +515,7 @@ export default async function LandingPage({
         {/* How it Works */}
         <section className="py-28">
           <div className="max-w-4xl mx-auto px-6">
-            <AnimatedWrapper>
-              <HowItWorksHeaderStatic />
-            </AnimatedWrapper>
+            <HowItWorksHeaderStatic t={t} />
 
             <div className="relative">
               {/* Vertical line */}
@@ -514,28 +525,28 @@ export default async function LandingPage({
                 {[
                   {
                     step: "01",
-                    title: "Crie o Seu Clube",
-                    desc: "Registe a sua academia em poucos cliques e personalize o seu espaço",
+                    title: t.howItWorks.steps.step1.title,
+                    desc: t.howItWorks.steps.step1.desc,
                   },
                   {
                     step: "02",
-                    title: "Convide Atletas",
-                    desc: "Envie convites por e-mail. Atletas recebem um link para aceder",
+                    title: t.howItWorks.steps.step2.title,
+                    desc: t.howItWorks.steps.step2.desc,
                   },
                   {
                     step: "03",
-                    title: "Perfis Completos",
-                    desc: "Atletas adicionam foto, peso, modalidades e histórico de lutas",
+                    title: t.howItWorks.steps.step3.title,
+                    desc: t.howItWorks.steps.step3.desc,
                   },
                   {
                     step: "04",
-                    title: "Gere Eventos",
-                    desc: "Inscreva atletas em competições e acompanhe resultados",
+                    title: t.howItWorks.steps.step4.title,
+                    desc: t.howItWorks.steps.step4.desc,
                   },
                 ].map((item, i) => (
-                  <AnimatedWrapper key={i} delay={i * 0.1}>
+                  <AnimatedWrapperLazy key={i} delay={i * 0.1}>
                     <StepItemStatic item={item} index={i} />
-                  </AnimatedWrapper>
+                  </AnimatedWrapperLazy>
                 ))}
               </div>
             </div>
@@ -545,16 +556,14 @@ export default async function LandingPage({
         {/* CTA Section */}
         <section className="py-24 bg-gradient-to-br from-orange-500 to-red-600 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
-          <AnimatedWrapper>
-            <CTASectionStatic />
-          </AnimatedWrapper>
+          <CTASectionStatic t={t} />
           <div className="flex justify-center mt-10">
             <Button
               size="lg"
               disabled
               className="h-14 px-10 text-lg rounded-full bg-white text-orange-600 opacity-60 cursor-not-allowed shadow-xl"
             >
-              Brevemente <ArrowRight className="ml-2 w-5 h-5" />
+              {t.cta.button} <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </section>
@@ -562,31 +571,27 @@ export default async function LandingPage({
         {/* Interest Form Section */}
         <section id="interest" className="py-24 bg-background">
           <div className="max-w-2xl mx-auto px-6">
-            <AnimatedWrapper>
-              <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-                  Está Interessado?
-                </h2>
-                <p className="text-lg text-foreground/75">
-                  Deixe-nos o seu contacto e entraremos em contacto quando a
-                  plataforma estiver disponível.
-                </p>
-              </div>
-            </AnimatedWrapper>
-            <AnimatedWrapper delay={0.2}>
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
+                {t.interest.title}
+              </h2>
+              <p className="text-lg text-foreground/75">
+                {t.interest.subtitle}
+              </p>
+            </div>
+            <AnimatedWrapperLazy delay={0.2}>
               <Card className="border-border/50 shadow-lg">
                 <CardHeader>
-                  <CardTitle>Formulário de Interesse</CardTitle>
+                  <CardTitle>{t.interest.form.title}</CardTitle>
                   <CardDescription>
-                    Preencha o formulário abaixo e entraremos em contacto
-                    brevemente.
+                    {t.interest.form.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <InterestForm />
+                  <InterestForm t={t} />
                 </CardContent>
               </Card>
-            </AnimatedWrapper>
+            </AnimatedWrapperLazy>
           </div>
         </section>
 
@@ -611,19 +616,20 @@ export default async function LandingPage({
                   </span>
                 </div>
                 <p className="text-foreground/70 max-w-md">
-                  A plataforma completa para gestão de clubes de desportos de
-                  combate. A conectar atletas, treinadores e organizadores.
+                  {t.footer.description}
                 </p>
               </div>
               <div>
-                <h3 className="font-bold mb-4 text-base">Plataforma</h3>
+                <h3 className="font-bold mb-4 text-base">
+                  {t.footer.platform}
+                </h3>
                 <ul className="space-y-2 text-foreground/70">
                   <li>
                     <a
                       href="#features"
                       className="hover:text-foreground transition-colors"
                     >
-                      Funcionalidades
+                      {t.footer.features}
                     </a>
                   </li>
                   <li>
@@ -631,7 +637,7 @@ export default async function LandingPage({
                       href="#club"
                       className="hover:text-foreground transition-colors"
                     >
-                      Para Clubes
+                      {t.footer.forClubs}
                     </a>
                   </li>
                   <li>
@@ -639,7 +645,7 @@ export default async function LandingPage({
                       href="#athlete"
                       className="hover:text-foreground transition-colors"
                     >
-                      Para Atletas
+                      {t.footer.forAthletes}
                     </a>
                   </li>
                   <li>
@@ -647,20 +653,20 @@ export default async function LandingPage({
                       href="#sports"
                       className="hover:text-foreground transition-colors"
                     >
-                      Modalidades
+                      {t.footer.modalities}
                     </a>
                   </li>
                 </ul>
               </div>
               <div>
-                <h3 className="font-bold mb-4 text-base">Legal</h3>
+                <h3 className="font-bold mb-4 text-base">{t.footer.legal}</h3>
                 <ul className="space-y-2 text-foreground/70">
                   <li>
                     <Link
                       href="/termos"
                       className="hover:text-foreground transition-colors"
                     >
-                      Termos de Uso
+                      {t.footer.termsOfUse}
                     </Link>
                   </li>
                   <li>
@@ -668,7 +674,7 @@ export default async function LandingPage({
                       href="/privacidade"
                       className="hover:text-foreground transition-colors"
                     >
-                      Privacidade
+                      {t.footer.privacy}
                     </Link>
                   </li>
                   <li>
@@ -676,7 +682,7 @@ export default async function LandingPage({
                       href="/lgpd"
                       className="hover:text-foreground transition-colors"
                     >
-                      LGPD
+                      {t.footer.lgpd}
                     </Link>
                   </li>
                   <li>
@@ -684,16 +690,14 @@ export default async function LandingPage({
                       href="#interest"
                       className="hover:text-foreground transition-colors"
                     >
-                      Estou Interessado
+                      {t.footer.imInterested}
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-foreground/70">
-                © 2025 Compiqo. Todos os direitos reservados.
-              </p>
+              <p className="text-sm text-foreground/70">{t.footer.copyright}</p>
             </div>
           </div>
         </footer>

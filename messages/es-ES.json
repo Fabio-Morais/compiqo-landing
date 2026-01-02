@@ -25,8 +25,9 @@
     "subtitle": "Boxeo, Kickboxing y Muay Thai con categorías Amateur, Neo-Profesional y Profesional"
   },
   "features": {
-    "title": "Funcionalidades Completas",
-    "subtitle": "Todo lo que necesitas para gestionar tu club de deportes de combate",
+    "title": "Funcionalidades",
+    "subtitle": "Todo lo que necesitas para gestionar tu club",
+    "description": "Herramientas profesionales para clubes de todos los tamaños. Simplifica la gestión y enfócate en lo que importa: formar campeones.",
     "athleteManagement": {
       "title": "Gestión de Atletas",
       "desc": "Registra atletas, gestiona perfiles por modalidad, sigue el estado de preparación e historial completo de cada luchador."
@@ -67,20 +68,22 @@
   },
   "athlete": {
     "title": "Para Atletas",
-    "description": "Accede a tu perfil, actualiza peso y disponibilidad, ve tu historial",
+    "description": "Recibe una invitación de tu club y completa tu perfil",
+    "free": "Gratis",
     "features": [
-      "Perfil completo con historial de combates",
-      "Actualización de peso y disponibilidad",
-      "Notificaciones de eventos y competiciones",
-      "Visualización de adversarios compatibles",
-      "Acceso gratuito a todas las funcionalidades",
-      "Datos protegidos y privados"
+      "Recibe invitación por correo electrónico de tu club",
+      "Completa tu perfil con foto y datos",
+      "Registra tu historial inicial de combates",
+      "Actualiza peso y disponibilidad",
+      "Ve eventos en los que estás inscrito",
+      "Sigue tu historial de conquistas"
     ],
+    "athleteNote": "¿Eres atleta? Pide a tu club que te registre en la plataforma. Recibirás una invitación por correo electrónico.",
     "cta": "Próximamente"
   },
   "howItWorks": {
     "title": "Cómo Funciona",
-    "subtitle": "Comienza a usar Compiqo en 4 pasos simples",
+    "subtitle": "Cuatro pasos simples para comenzar",
     "steps": {
       "step1": {
         "title": "Crea Tu Club",
@@ -101,8 +104,8 @@
     }
   },
   "cta": {
-    "title": "¿Listo para Empezar?",
-    "subtitle": "Únete a los clubes que ya confían en Compiqo para gestionar sus atletas",
+    "title": "¿Listo para transformar tu club?",
+    "subtitle": "Únete a los clubes que ya están usando Compiqo para preparar atletas campeones. Comienza gratis hoy.",
     "button": "Próximamente"
   },
   "interest": {
@@ -111,20 +114,136 @@
     "form": {
       "title": "Formulario de Interés",
       "description": "Completa el formulario a continuación y nos pondremos en contacto próximamente.",
-      "name": "Nombre Completo",
-      "email": "Email",
-      "message": "Mensaje (Opcional)",
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "E-mail",
+      "emailPlaceholder": "tu@email.com",
+      "message": "Mensaje (opcional)",
+      "messagePlaceholder": "Cuéntanos más sobre tu interés...",
       "submit": "Enviar Interés",
       "sending": "Enviando...",
-      "success": "¡Gracias! Tu mensaje ha sido enviado con éxito.",
-      "error": "Error:"
+      "successTitle": "¡Gracias por tu interés!",
+      "successMessage": "Nos pondremos en contacto pronto.",
+      "error": "Ocurrió un error. Por favor, inténtalo de nuevo.",
+      "errorSending": "Error al enviar mensaje"
     }
   },
   "footer": {
     "description": "La plataforma completa para gestión de clubes de deportes de combate. Conectando atletas, entrenadores y organizadores.",
     "platform": "Plataforma",
+    "features": "Funcionalidades",
+    "forClubs": "Para Clubes",
+    "forAthletes": "Para Atletas",
+    "modalities": "Modalidades",
     "legal": "Legal",
+    "termsOfUse": "Términos de Uso",
+    "privacy": "Privacidad",
+    "lgpd": "LGPD",
+    "imInterested": "Estoy Interesado",
     "copyright": "© 2025 Compiqo. Todos los derechos reservados."
+  },
+  "mockup": {
+    "screens": {
+      "matchmaking": {
+        "title": "Matchmaking",
+        "description": "Encuentra adversarios de otras academias"
+      },
+      "management": {
+        "title": "Mi Club",
+        "description": "Gestión completa de tu club"
+      },
+      "history": {
+        "title": "Historial",
+        "description": "Historial de combates y estadísticas"
+      },
+      "community": {
+        "title": "Comunidad",
+        "description": "Conéctate con otros atletas y clubes"
+      }
+    },
+    "matchmaking": {
+      "searchTitle": "Buscar Adversario",
+      "eventCreated": "Evento Creado",
+      "new": "Nuevo",
+      "fightScheduled": "Combate programado con {athlete}",
+      "academiesConnected": "academias conectadas"
+    },
+    "management": {
+      "clubSummary": "Resumen del Club",
+      "athletes": "Atletas",
+      "ready": "Listos",
+      "athletesReady": "atletas listos",
+      "forSaturdayEvent": "Para el evento del sábado",
+      "weightCutting": "en corte de peso",
+      "activeMonitoring": "Monitoreo activo",
+      "nextEvent": "Próximo Evento",
+      "comingSoon": "Próximamente",
+      "regionalChampionship": "Campeonato Regional"
+    },
+    "history": {
+      "generalStats": "Estadísticas Generales",
+      "victories": "Victorias",
+      "defeats": "Derrotas",
+      "draws": "Empates",
+      "victoryByKO": "Victoria por KO",
+      "victoryByDecision": "Victoria por Decisión",
+      "victory": "Victoria",
+      "weeksAgo": "Hace 2 semanas",
+      "monthAgo": "Hace 1 mes",
+      "lastEvent": "Último Evento",
+      "completed": "Completado",
+      "victoriesDefeats": "victorias • derrota"
+    },
+    "community": {
+      "activeCommunity": "Comunidad Activa",
+      "members": "miembros",
+      "postsToday": "publicaciones hoy",
+      "excellentTraining": "¡Excelente entrenamiento hoy! ¿Quién más está preparado para el campeonato?",
+      "weightCuttingTips": "¿Consejos de corte de peso? ¡Compartan sus experiencias!",
+      "communityEvent": "Evento de la Comunidad",
+      "athletesMeeting": "Encuentro de Atletas - {location}",
+      "participantsConfirmed": "participantes confirmados"
+    },
+    "common": {
+      "ready": "Listo",
+      "vs": "vs",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "sampleData": {
+      "athletes": {
+        "miguelAlves": "Miguel Alves",
+        "sofiaCosta": "Sofia Costa",
+        "ricardoCarvalho": "Ricardo Carvalho",
+        "joaoSilva": "João Silva",
+        "carlosMendes": "Carlos Mendes",
+        "anaCosta": "Ana Costa",
+        "pedroMartins": "Pedro Martins"
+      },
+      "academies": {
+        "lisboaFight": "Academia Lisboa Fight",
+        "portoCombat": "Club Porto Combat",
+        "portoCombatAcademy": "Academia Porto Combat"
+      },
+      "classes": {
+        "amateur": "Amador",
+        "neoPro": "Neo-Pro",
+        "pro": "Pro"
+      },
+      "sports": {
+        "boxing": "Boxe",
+        "kickboxing": "💥 Kickboxing",
+        "muayThai": "🦵 Muay Thai"
+      },
+      "locations": {
+        "lisboa": "Lisboa",
+        "porto": "Oporto"
+      },
+      "dates": {
+        "june15": "15 de Junio",
+        "saturday": "sábado"
+      }
+    }
   }
 }
 

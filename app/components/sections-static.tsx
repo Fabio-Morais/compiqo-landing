@@ -9,6 +9,7 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import { Translations } from "../lib/i18n";
 
 const iconMap: Record<string, LucideIcon> = {
   Users,
@@ -19,14 +20,14 @@ const iconMap: Record<string, LucideIcon> = {
   Zap,
 };
 
-export function SportsSectionHeaderStatic() {
+export function SportsSectionHeaderStatic({ t }: { t: Translations }) {
   return (
     <div className="text-center mb-12">
       <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-        Modalidades Suportadas
+        {t.sports.title}
       </h2>
       <p className="text-lg text-foreground/75 max-w-2xl mx-auto">
-        Suporte completo para as três principais modalidades de combate
+        {t.sports.subtitle}
       </p>
     </div>
   );
@@ -55,18 +56,17 @@ export function SportCardStatic({
   );
 }
 
-export function FeaturesSectionHeaderStatic() {
+export function FeaturesSectionHeaderStatic({ t }: { t: Translations }) {
   return (
     <div className="text-center max-w-4xl mx-auto mb-20 space-y-6">
       <Badge className="mb-4 text-base px-4 py-1.5 bg-orange-100 text-orange-700 hover:bg-orange-100 dark:bg-orange-950 dark:text-orange-400">
-        Funcionalidades
+        {t.features.title}
       </Badge>
       <h2 className="text-5xl md:text-6xl font-heading font-bold leading-tight">
-        Tudo o que precisa para gerir o seu clube
+        {t.features.subtitle}
       </h2>
       <p className="text-xl md:text-2xl text-foreground/75 max-w-3xl mx-auto">
-        Ferramentas profissionais para clubes de todos os tamanhos.
-        Simplifique a gestão e foque no que importa: formar campeões.
+        {t.features.description}
       </p>
     </div>
   );
@@ -93,14 +93,14 @@ export function FeatureCardStatic({
   );
 }
 
-export function HowItWorksHeaderStatic() {
+export function HowItWorksHeaderStatic({ t }: { t: Translations }) {
   return (
     <div className="mb-16">
       <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-        Como Funciona
+        {t.howItWorks.title}
       </h2>
       <p className="text-lg text-foreground/75">
-        Quatro passos simples para começar
+        {t.howItWorks.subtitle}
       </p>
     </div>
   );
@@ -135,15 +135,14 @@ export function StepItemStatic({
   );
 }
 
-export function CTASectionStatic() {
+export function CTASectionStatic({ t }: { t: Translations }) {
   return (
     <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
       <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-        Pronto para transformar o seu clube?
+        {t.cta.title}
       </h2>
       <p className="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
-        Junte-se a clubes que já estão a usar o Compiqo para preparar atletas
-        campeões. Comece gratuitamente hoje.
+        {t.cta.subtitle}
       </p>
     </div>
   );
