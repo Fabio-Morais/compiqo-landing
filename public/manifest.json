@@ -1,0 +1,25 @@
+{
+  "name": "Compiqo - Plataforma para Gestão de Clubes de Desportos de Combate",
+  "short_name": "Compiqo",
+  "description": "Plataforma completa para gestão de clubes de desportos de combate. Controlo de peso, prontidão para competições, histórico de lutas e muito mais.",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "theme_color": "#ea580c",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "orientation": "portrait-primary"
+}
+

@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url,
         lastModified: new Date(),
         changeFrequency: page === "" ? "weekly" : "monthly",
-        priority: page === "" ? 1.0 : 0.5,
+        priority: page === "" ? 1.0 : page === "termos" || page === "privacidade" ? 0.3 : 0.5,
         alternates: {
           languages: {
             "pt-PT": `${baseUrl}/pt-PT${page ? `/${page}` : ""}`,

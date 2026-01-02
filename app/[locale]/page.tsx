@@ -45,13 +45,13 @@ export default async function LandingPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: localeParam } = await params;
-  const locale: Locale = (localeParam === "es-ES" ? "es-ES" : "pt-PT");
+  const locale: Locale = localeParam === "es-ES" ? "es-ES" : "pt-PT";
   const t = getTranslations(locale);
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://compiqo.com";
 
   // Structured Data Schemas - Localizados por idioma
   const isES = locale === "es-ES";
-  
+
   const softwareApplicationSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -62,9 +62,7 @@ export default async function LandingPage({
       ? "Plataforma completa para gestión de clubes de deportes de combate. Control de peso, preparación para competiciones, historial de combates y mucho más."
       : "Plataforma completa para gestão de clubes de desportos de combate. Controlo de peso, prontidão para competições, histórico de lutas e muito mais.",
     url: `${baseUrl}/${locale}`,
-    applicationSubCategory: isES
-      ? "Gestión Deportiva"
-      : "Gestão Desportiva",
+    applicationSubCategory: isES ? "Gestión Deportiva" : "Gestão Desportiva",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -223,6 +221,22 @@ export default async function LandingPage({
               text: "Compiqo está disponible para clubes y atletas en España y Portugal.",
             },
           },
+          {
+            "@type": "Question",
+            name: "¿Cómo funciona el control de peso en Compiqo?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Compiqo permite monitorizar el peso normal y el peso de competición de cada atleta. El sistema envía alertas inteligentes para un corte de peso saludable antes de los eventos, ayudando a los entrenadores a preparar mejor a sus atletas.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "¿Los datos están protegidos?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Sí, todos los datos están protegidos y en conformidad con el RGPD. La plataforma utiliza encriptación y medidas de seguridad avanzadas para proteger la información personal de atletas y clubes.",
+            },
+          },
         ]
       : [
           {
@@ -265,6 +279,131 @@ export default async function LandingPage({
               text: "O Compiqo está disponível para clubes e atletas em Portugal e Espanha.",
             },
           },
+          {
+            "@type": "Question",
+            name: "Como funciona o controlo de peso no Compiqo?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "O Compiqo permite monitorizar o peso normal e o peso de competição de cada atleta. O sistema envia alertas inteligentes para um corte de peso saudável antes dos eventos, ajudando os treinadores a preparar melhor os seus atletas.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Os dados estão protegidos?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Sim, todos os dados estão protegidos e em conformidade com o RGPD. A plataforma utiliza encriptação e medidas de segurança avançadas para proteger a informação pessoal de atletas e clubes.",
+            },
+          },
+        ],
+  };
+
+  // Service Schema - Para melhorar SEO de serviços
+  const serviceSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: isES
+      ? "Gestión de Clubes de Deportes de Combate"
+      : "Gestão de Clubes de Desportos de Combate",
+    provider: {
+      "@type": "Organization",
+      name: "Compiqo",
+      url: baseUrl,
+    },
+    areaServed: [
+      {
+        "@type": "Country",
+        name: "Portugal",
+      },
+      {
+        "@type": "Country",
+        name: "España",
+      },
+    ],
+    description: isES
+      ? "Plataforma completa para gestión de clubes de deportes de combate con control de peso, gestión de atletas, eventos y matchmaking."
+      : "Plataforma completa para gestão de clubes de desportos de combate com controlo de peso, gestão de atletas, eventos e matchmaking.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/PreOrder",
+    },
+    inLanguage: locale,
+  };
+
+  // ItemList Schema para funcionalidades
+  const itemListSchema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: isES ? "Funcionalidades de Compiqo" : "Funcionalidades do Compiqo",
+    description: isES
+      ? "Lista completa de funcionalidades da plataforma Compiqo"
+      : "Lista completa de funcionalidades da plataforma Compiqo",
+    itemListElement: isES
+      ? [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Gestión de Atletas",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Control de Peso",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "Eventos e Inscripciones",
+          },
+          {
+            "@type": "ListItem",
+            position: 4,
+            name: "Historial de Combates",
+          },
+          {
+            "@type": "ListItem",
+            position: 5,
+            name: "Matchmaking",
+          },
+          {
+            "@type": "ListItem",
+            position: 6,
+            name: "Tiempo Real",
+          },
+        ]
+      : [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Gestão de Atletas",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Controlo de Peso",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "Eventos e Inscrições",
+          },
+          {
+            "@type": "ListItem",
+            position: 4,
+            name: "Histórico de Lutas",
+          },
+          {
+            "@type": "ListItem",
+            position: 5,
+            name: "Matchmaking",
+          },
+          {
+            "@type": "ListItem",
+            position: 6,
+            name: "Tempo Real",
+          },
         ],
   };
 
@@ -298,6 +437,18 @@ export default async function LandingPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(itemListSchema),
         }}
       />
       <main className="min-h-screen flex flex-col bg-background text-foreground font-sans overflow-x-hidden">
@@ -373,7 +524,11 @@ export default async function LandingPage({
           <div className="absolute inset-0 z-0">
             <Image
               src={generatedAppBg}
-              alt=""
+              alt={
+                isES
+                  ? "Fondo abstracto de la aplicación Compiqo para gestión de clubes de deportes de combate"
+                  : "Fundo abstrato da aplicação Compiqo para gestão de clubes de desportos de combate"
+              }
               fill
               className="object-cover opacity-[0.03]"
               priority
@@ -595,11 +750,7 @@ export default async function LandingPage({
                 <div className="flex items-center gap-3 mb-4">
                   <Image
                     src={logo}
-                    alt={
-                      isES
-                        ? "Compiqo - Logo"
-                        : "Compiqo - Logo"
-                    }
+                    alt={isES ? "Compiqo - Logo" : "Compiqo - Logo"}
                     width={40}
                     height={40}
                     className="object-contain"

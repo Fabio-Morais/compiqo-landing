@@ -36,8 +36,8 @@ export async function generateMetadata({
     : "Compiqo - Plataforma Completa para Gestão de Clubes de Desportos de Combate";
 
   const description = isES
-    ? "Gestiona tu club de deportes de combate con Compiqo. Control de peso, preparación para competiciones, historial de combates y mucho más. La plataforma esencial para conectar clubes, atletas y organizadores de eventos en España."
-    : "Gere o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e muito mais. A plataforma essencial para conectar clubes, atletas e organizadores de eventos em Portugal.";
+    ? "Gestiona tu club de deportes de combate con Compiqo. Control de peso, preparación para competiciones, historial de combates y matchmaking. Plataforma B2B gratuita para atletas. Soporta Boxeo, Kickboxing y Muay Thai. Disponible en España y Portugal."
+    : "Gere o seu clube de desportos de combate com o Compiqo. Controlo de peso, prontidão para competições, histórico de lutas e matchmaking. Plataforma B2B gratuita para atletas. Suporta Boxing, Kickboxing e Muay Thai. Disponível em Portugal e Espanha.";
 
   const keywords = isES
     ? [
@@ -58,6 +58,19 @@ export async function generateMetadata({
         "matchmaking",
         "historial de combates",
         "preparación para competiciones",
+        "gestión deportiva",
+        "clubes de boxeo",
+        "clubes de kickboxing",
+        "clubes de muay thai",
+        "corte de peso",
+        "pesaje deportivo",
+        "competiciones de combate",
+        "organización de eventos",
+        "sistema de gestión deportiva",
+        "plataforma B2B deportes",
+        "software para gimnasios",
+        "gestión de competidores",
+        "registro de combates",
       ]
     : [
         "desportos de combate",
@@ -77,6 +90,19 @@ export async function generateMetadata({
         "matchmaking",
         "histórico de lutas",
         "prontidão para competir",
+        "gestão desportiva",
+        "clubes de boxe",
+        "clubes de kickboxing",
+        "clubes de muay thai",
+        "corte de peso",
+        "pesagem desportiva",
+        "competições de combate",
+        "organização de eventos",
+        "sistema de gestão desportiva",
+        "plataforma B2B desportos",
+        "software para ginásios",
+        "gestão de competidores",
+        "registo de lutas",
       ];
 
   return {
@@ -98,7 +124,7 @@ export async function generateMetadata({
       address: false,
     },
     alternates: {
-      canonical: `/${locale}`,
+      canonical: `${baseUrl}/${locale}`,
       languages: {
         "pt-PT": `${baseUrl}/pt-PT`,
         "es-ES": `${baseUrl}/es-ES`,
@@ -145,9 +171,14 @@ export async function generateMetadata({
       },
     },
     icons: {
-      icon: "/logo.png",
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/logo.png", sizes: "48x48", type: "image/png" },
+        { url: "/logo.png", sizes: "192x192", type: "image/png" },
+        { url: "/logo.png", sizes: "512x512", type: "image/png" },
+      ],
       apple: "/logo.png",
-      shortcut: "/logo.png",
+      shortcut: "/favicon.ico",
     },
     verification: {
       // Adicione quando tiver Google Search Console
@@ -187,6 +218,13 @@ export default async function LocaleLayout({
           href={`${baseUrl}/${otherLocale}`}
         />
         <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/pt-PT`} />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/logo.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/logo.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}

@@ -1,7 +1,8 @@
 import { Button } from "./ui/button";
 import { ArrowRight, CheckCircle2, Shield, Zap } from "lucide-react";
+import { Translations } from "../lib/i18n";
 
-export function HeroContentStatic({ t }: { t: any }) {
+export function HeroContentStatic({ t }: { t: Translations }) {
   return (
     <div className="space-y-10">
       <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-600 text-sm font-bold border border-orange-100 shadow-sm dark:bg-orange-950/50 dark:border-orange-900">

@@ -1,21 +1,37 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Política LGPD | Compiqo",
-  description:
-    "Política de conformidade com a Lei Geral de Proteção de Dados (LGPD) da plataforma Compiqo.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isES = locale === "es-ES";
+  
+  return {
+    title: isES ? "Política LGPD | Compiqo" : "Política LGPD | Compiqo",
+    description: isES
+      ? "Política de conformidad con la Ley General de Protección de Datos (LGPD) de la plataforma Compiqo."
+      : "Política de conformidade com a Lei Geral de Proteção de Dados (LGPD) da plataforma Compiqo.",
+  };
+}
 
-export default function LGPDPage() {
+export default async function LGPDPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const isES = locale === "es-ES";
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-background/60 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href={`/${locale}`} className="flex items-center gap-3">
             <Image
               src={logo}
               alt="Compiqo"
@@ -26,10 +42,10 @@ export default function LGPDPage() {
             <span className="font-heading font-bold text-xl">Compiqo</span>
           </Link>
           <Link
-            href="/"
+            href={`/${locale}`}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            Voltar ao início
+            {isES ? "Volver al inicio" : "Voltar ao início"}
           </Link>
         </div>
       </header>
@@ -37,10 +53,10 @@ export default function LGPDPage() {
       {/* Content */}
       <main className="max-w-4xl mx-auto px-6 py-16">
         <h1 className="text-4xl md:text-5xl font-heading font-bold mb-8">
-          Política de Conformidade LGPD
+          {isES ? "Política de Conformidad LGPD" : "Política de Conformidade LGPD"}
         </h1>
         <p className="text-muted-foreground mb-8">
-          Última actualização: {new Date().toLocaleDateString("pt-PT")}
+          {isES ? "Última actualización:" : "Última actualização:"} {new Date().toLocaleDateString(isES ? "es-ES" : "pt-PT")}
         </p>
 
         <div className="prose prose-slate dark:prose-invert max-w-none space-y-8">
@@ -208,7 +224,7 @@ export default function LGPDPage() {
             </p>
             <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
               <li>
-                <strong>E-mail:</strong> fabio-morais@outlook.pt
+                <strong>E-mail:</strong> geral@compiqo.pt
               </li>
               <li>
                 <strong>Prazo de resposta:</strong> Responderemos ao seu pedido
@@ -324,10 +340,10 @@ export default function LGPDPage() {
 
         <div className="mt-12 pt-8 border-t border-border">
           <Link
-            href="/"
+            href={`/${locale}`}
             className="text-primary hover:underline inline-flex items-center gap-2"
           >
-            ← Voltar ao início
+            ← {isES ? "Volver al inicio" : "Voltar ao início"}
           </Link>
         </div>
       </main>

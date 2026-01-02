@@ -10,6 +10,8 @@ const messages = {
   "es-ES": esES,
 };
 
+export type Translations = typeof ptPT;
+
 export function getTranslations(locale: Locale) {
   if (!locales.includes(locale)) {
     notFound();
