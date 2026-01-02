@@ -371,15 +371,16 @@ export default async function LandingPage({
         {/* Hero Section */}
         <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pt-52 lg:pb-40">
           <div className="absolute inset-0 z-0">
+            {/* Defer background image - not critical for LCP */}
             <Image
               src={generatedAppBg}
               alt=""
               fill
               className="object-cover opacity-[0.03]"
-              priority
+              loading="lazy"
               aria-hidden="true"
               sizes="100vw"
-              quality={75}
+              quality={50}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
           </div>

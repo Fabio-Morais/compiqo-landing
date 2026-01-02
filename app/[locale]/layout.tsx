@@ -10,6 +10,7 @@ const geistSans = Geist({
   subsets: ["latin"],
   display: "swap",
   preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 const geistMono = Geist_Mono({
@@ -17,6 +18,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
   preload: false,
+  fallback: ["monospace"],
 });
 
 export async function generateMetadata({
