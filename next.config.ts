@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
+    styledComponents: {
+      // Enabled by default
+      ssr: true,
+
+      // Enabled by default
+      minify: true,
+
+    },
   },
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],

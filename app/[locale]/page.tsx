@@ -373,7 +373,11 @@ export default async function LandingPage({
           <div className="absolute inset-0 z-0">
             <Image
               src={generatedAppBg}
-              alt=""
+              alt={
+                isES
+                  ? "Fondo decorativo de la plataforma Compiqo"
+                  : "Fundo decorativo da plataforma Compiqo"
+              }
               fill
               className="object-cover opacity-[0.03]"
               priority
@@ -557,7 +561,7 @@ export default async function LandingPage({
         <section className="py-24 bg-gradient-to-br from-orange-500 to-red-600 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
           <CTASectionStatic t={t} />
-          <div className="flex justify-center mt-10">
+          <div className="flex flex-col items-center gap-4 mt-10">
             <Button
               size="lg"
               disabled
@@ -616,7 +620,21 @@ export default async function LandingPage({
                   </span>
                 </div>
                 <p className="text-foreground/70 max-w-md">
-                  {t.footer.description}
+                  {t.footer.description}{" "}
+                  <Link
+                    href={`/${locale}/termos`}
+                    className="text-orange-600 hover:text-orange-700 underline underline-offset-2"
+                  >
+                    {t.footer.termsOfUse}
+                  </Link>{" "}
+                  e{" "}
+                  <Link
+                    href={`/${locale}/lgpd`}
+                    className="text-orange-600 hover:text-orange-700 underline underline-offset-2"
+                  >
+                    {t.footer.lgpd}
+                  </Link>
+                  .
                 </p>
               </div>
               <div>
@@ -663,7 +681,7 @@ export default async function LandingPage({
                 <ul className="space-y-2 text-foreground/70">
                   <li>
                     <Link
-                      href="/termos"
+                      href={`/${locale}/termos`}
                       className="hover:text-foreground transition-colors"
                     >
                       {t.footer.termsOfUse}
@@ -671,7 +689,7 @@ export default async function LandingPage({
                   </li>
                   <li>
                     <Link
-                      href="/privacidade"
+                      href={`/${locale}/privacidade`}
                       className="hover:text-foreground transition-colors"
                     >
                       {t.footer.privacy}
@@ -679,7 +697,7 @@ export default async function LandingPage({
                   </li>
                   <li>
                     <Link
-                      href="/lgpd"
+                      href={`/${locale}/lgpd`}
                       className="hover:text-foreground transition-colors"
                     >
                       {t.footer.lgpd}
